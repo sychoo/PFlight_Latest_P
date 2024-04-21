@@ -19,3 +19,4 @@
 /Users/chus/Code/proj/vspells/PFlight_minimal/PGenerated/CSharp/obj/Release/net8.0/FlightSystem.pdb
 /Users/chus/Code/proj/vspells/PFlight_minimal/PGenerated/CSharp/obj/Release/net8.0/FlightSystem.genruntimeconfig.cache
 /Users/chus/Code/proj/vspells/PFlight_minimal/PGenerated/CSharp/obj/Release/net8.0/ref/FlightSystem.dll
+/Users/chus/Code/proj/vspells/PFlight_minimal/PGenerated/CSharp/obj/Release/net8.0/FlightSystem.sourcelink.json

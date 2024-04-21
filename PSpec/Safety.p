@@ -15,12 +15,15 @@ event eDisarmed;
 event eReturnToLaunch;
 event eShutdownSystem;
 
+// this spec ensures that the drone does not go out of order
 spec DroneModesOfOperation observes eSpec_PreFlight, eError, eArm, eTakeoff, eHold,
                                     eInAir, eReturnToLaunch, eLanding,
                                     eDisarmed, eShutdownSystem
 {
     start state Init {
-        on eSpec_PreFlight goto PreFlight;
+        on eSpec_PreFlight do {
+            goto PreFlight;
+        }
         on eError goto Error;
     }
 
@@ -86,15 +89,23 @@ spec DroneModesOfOperation observes eSpec_PreFlight, eError, eArm, eTakeoff, eHo
         ignore eShutdownSystem;
     }
 
-    state Error
+    // should not terminate on error state
+    hot state Error
     {
-        ignore eError;
+        entry {
+            assert false, "Error state reached";
+        }
+        on eError do {
+            assert false, "Error state reached";
+        }
+        // ignore eError;
     }  
 }
 
 event eMavSDKReq : int;
 event eMavSDKResp : int;
 
+// this ensures that the monitor does not miss any response, and does not get stuck on pending requests state
 spec LivenessMonitor observes eMavSDKReq, eMavSDKResp 
 {
     var reqId: set[int];

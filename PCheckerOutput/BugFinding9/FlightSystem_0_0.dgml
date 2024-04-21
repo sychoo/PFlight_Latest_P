@@ -1,0 +1,68 @@
+﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
+  <Nodes>
+    <Node Id='PImplementation.DroneModesOfOperation' Label='PImplementation.DroneModesOfOperation' Category='Monitor'/>
+    <Node Id='PImplementation.FailureDroneGPT' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureDroneGPT.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureDroneGPT.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjectorGPT' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureInjectorGPT.FailOneMonitor' Label='FailOneMonitor'/>
+    <Node Id='PImplementation.FailureInjectorGPT.Halt' Label='Halt'/>
+    <Node Id='PImplementation.FailureInjectorGPT.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureInjectorGPT.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjectorGPT.null' Label='null'/>
+    <Node Id='PImplementation.FlightController' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FlightController.Init' Label='Init'/>
+    <Node Id='PImplementation.FlightController.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.LivenessMonitor' Label='PImplementation.LivenessMonitor' Category='Monitor'/>
+    <Node Id='PImplementation.MavSDK' Category='StateMachine'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
+  </Nodes>
+  <Links>
+    <Link Source='PImplementation.FailureDroneGPT' Target='PImplementation.FailureDroneGPT.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureDroneGPT' Target='PImplementation.FailureDroneGPT.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureDroneGPT.Init' Target='PImplementation.FailureInjectorGPT.FailOneMonitor' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='FailOneMonitor'/>
+    <Link Source='PImplementation.FailureDroneGPT.__InitState__' Target='PImplementation.FailureDroneGPT.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureDroneGPT+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.FailOneMonitor' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.Halt' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.null' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT.Init' Target='PImplementation.FailureInjectorGPT.FailOneMonitor' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT.__InitState__' Target='PImplementation.FailureInjectorGPT.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureInjectorGPT+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT.null' Target='PImplementation.FailureInjectorGPT.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Init' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FlightController.__InitState__' Target='PImplementation.FlightController.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FlightController+ConstructorEvent'/>
+    <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
+  </Links>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Error" ValueLabel="True">
+      <Condition Expression="HasCategory('Error')" />
+      <Setter Property="Background" Value="#FFC15656" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Actor" ValueLabel="True">
+      <Condition Expression="HasCategory('Actor')" />
+      <Setter Property="Background" Value="#FF57AC56" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Monitor" ValueLabel="True">
+      <Condition Expression="HasCategory('Monitor')" />
+      <Setter Property="Background" Value="#FF558FDA" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="halt" ValueLabel="True">
+      <Condition Expression="HasCategory('halt')" />
+      <Setter Property="Stroke" Value="#FFFF6C6C" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="push" ValueLabel="True">
+      <Condition Expression="HasCategory('push')" />
+      <Setter Property="Stroke" Value="#FF7380F5" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="pop" ValueLabel="True">
+      <Condition Expression="HasCategory('pop')" />
+      <Setter Property="Stroke" Value="#FF7380F5" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+  </Styles>
+</DirectedGraph>

@@ -5,7 +5,7 @@
     <PFile>./PSpec</PFile>
     <PFile>./PTst</PFile>
     <PFile>./PSrc/Monitors</PFile>
-<PFile>./PForeign</PFile>
+    <PFile>./PForeign</PFile>
 </InputFiles>
 <OutputDir>./PGenerated/</OutputDir>
 </Project>

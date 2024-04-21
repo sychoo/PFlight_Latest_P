@@ -1,0 +1,416 @@
+[
+  {
+    "type": "CreateMonitor",
+    "details": {
+      "log": "DroneModesOfOperation was created.",
+      "payload": "null",
+      "monitor": "DroneModesOfOperation",
+      "clock": {
+        "DroneModesOfOperation": 1
+      }
+    }
+  },
+  {
+    "type": "MonitorStateTransition",
+    "details": {
+      "log": "DroneModesOfOperation enters state \u0027Init\u0027.",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "monitor": "DroneModesOfOperation",
+      "clock": {
+        "DroneModesOfOperation": 2
+      }
+    }
+  },
+  {
+    "type": "CreateMonitor",
+    "details": {
+      "log": "LivenessMonitor was created.",
+      "payload": "null",
+      "monitor": "LivenessMonitor",
+      "clock": {
+        "LivenessMonitor": 1
+      }
+    }
+  },
+  {
+    "type": "MonitorStateTransition",
+    "details": {
+      "log": "LivenessMonitor enters state \u0027Init\u0027.",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "monitor": "LivenessMonitor",
+      "clock": {
+        "LivenessMonitor": 2
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FailureDroneGPT(2) enters state \u0027Init\u0027.",
+      "id": "FailureDroneGPT(2)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "clock": {
+        "FailureDroneGPT(2)": 1
+      }
+    }
+  },
+  {
+    "type": "CreateStateMachine",
+    "details": {
+      "log": "FlightController(3) was created by FailureDroneGPT(2).",
+      "id": "FlightController(3)",
+      "creatorName": "FailureDroneGPT(2)",
+      "creatorType": "FailureDroneGPT",
+      "payload": "null",
+      "clock": {
+        "FlightController(3)": 1
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FlightController(3) enters state \u0027Init\u0027.",
+      "id": "FlightController(3)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "clock": {
+        "FlightController(3)": 2
+      }
+    }
+  },
+  {
+    "type": "CreateStateMachine",
+    "details": {
+      "log": "MavSDK(4) was created by FlightController(3).",
+      "id": "MavSDK(4)",
+      "creatorName": "FlightController(3)",
+      "creatorType": "FlightController",
+      "payload": "null",
+      "clock": {
+        "MavSDK(4)": 1
+      }
+    }
+  },
+  {
+    "type": "CreateStateMachine",
+    "details": {
+      "log": "FailureInjectorGPT(5) was created by FailureDroneGPT(2).",
+      "id": "FailureInjectorGPT(5)",
+      "creatorName": "FailureDroneGPT(2)",
+      "creatorType": "FailureDroneGPT",
+      "payload": "null",
+      "clock": {
+        "FailureInjectorGPT(5)": 1
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "MavSDK(4) enters state \u0027Init\u0027.",
+      "id": "MavSDK(4)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "clock": {
+        "MavSDK(4)": 2
+      }
+    }
+  },
+  {
+    "type": "SendEvent",
+    "details": {
+      "log": "\u0027FailureDroneGPT(2)\u0027 in state \u0027Init\u0027 sent event \u0027eLinkInitialized\u0027 to \u0027FailureInjectorGPT(5)\u0027.",
+      "event": "eLinkInitialized",
+      "state": "Init",
+      "payload": "null",
+      "sender": "FailureDroneGPT(2)",
+      "target": "FailureInjectorGPT(5)",
+      "opGroupId": "00000000-0000-0000-0000-000000000000",
+      "isTargetHalted": false,
+      "clock": {
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "CreateStateMachine",
+    "details": {
+      "log": "TelemetryMonitor(6) was created by MavSDK(4).",
+      "id": "TelemetryMonitor(6)",
+      "creatorName": "MavSDK(4)",
+      "creatorType": "MavSDK",
+      "payload": "null",
+      "clock": {
+        "TelemetryMonitor(6)": 1
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FailureInjectorGPT(5) enters state \u0027Init\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": true,
+      "clock": {
+        "FailureInjectorGPT(5)": 2
+      }
+    }
+  },
+  {
+    "type": "GotoState",
+    "details": {
+      "log": "FailureInjectorGPT(5) is transitioning from state \u0027Init\u0027 to state \u0027FailOneMonitor\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "startState": "Init",
+      "endState": "FailOneMonitor",
+      "payload": "null",
+      "clock": {
+        "FailureInjectorGPT(5)": 3
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FailureInjectorGPT(5) exits state \u0027Init\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": false,
+      "clock": {
+        "FailureInjectorGPT(5)": 4
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FailureInjectorGPT(5) enters state \u0027FailOneMonitor\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "isEntry": true,
+      "clock": {
+        "FailureInjectorGPT(5)": 5
+      }
+    }
+  },
+  {
+    "type": "DequeueEvent",
+    "details": {
+      "log": "\u0027FailureInjectorGPT(5)\u0027 dequeued event \u0027eLinkInitialized\u0027 in state \u0027FailOneMonitor\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "event": "eLinkInitialized",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "clock": {
+        "FailureInjectorGPT(5)": 6,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "CreateStateMachine",
+    "details": {
+      "log": "SystemMonitor(7) was created by MavSDK(4).",
+      "id": "SystemMonitor(7)",
+      "creatorName": "MavSDK(4)",
+      "creatorType": "MavSDK",
+      "payload": "null",
+      "clock": {
+        "SystemMonitor(7)": 1
+      }
+    }
+  },
+  {
+    "type": "SendEvent",
+    "details": {
+      "log": "\u0027FailureInjectorGPT(5)\u0027 in state \u0027FailOneMonitor\u0027 sent event \u0027eRespTakeoff with payload (False)\u0027 to \u0027FlightController(3)\u0027.",
+      "event": "eRespTakeoff",
+      "state": "FailOneMonitor",
+      "payload": false,
+      "sender": "FailureInjectorGPT(5)",
+      "target": "FlightController(3)",
+      "opGroupId": "00000000-0000-0000-0000-000000000000",
+      "isTargetHalted": false,
+      "clock": {
+        "FailureInjectorGPT(5)": 7,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "RaiseEvent",
+    "details": {
+      "log": "\u0027FailureInjectorGPT(5)\u0027 raised event \u0027PHalt\u0027 in state \u0027FailOneMonitor\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "event": "PHalt",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "clock": {
+        "FailureInjectorGPT(5)": 8,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FailureInjectorGPT(5) exits state \u0027FailOneMonitor\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "isEntry": false,
+      "clock": {
+        "FailureInjectorGPT(5)": 9,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "PopStateUnhandledEvent",
+    "details": {
+      "log": "FailureInjectorGPT(5) popped state FailOneMonitor due to unhandled event \u0027PHalt\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "event": "PHalt",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "clock": {
+        "FailureInjectorGPT(5)": 10,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "ExceptionThrown",
+    "details": {
+      "log": "FailureInjectorGPT(5) running action \u0027\u0027 in state \u0027FailOneMonitor\u0027 threw exception \u0027UnhandledEventException\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "action": "",
+      "exception": "UnhandledEventException",
+      "clock": {
+        "FailureInjectorGPT(5)": 11,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "ExceptionHandled",
+    "details": {
+      "log": "FailureInjectorGPT(5) running action \u0027\u0027 in state \u0027FailOneMonitor\u0027 chose to handle exception \u0027UnhandledEventException\u0027.",
+      "id": "FailureInjectorGPT(5)",
+      "state": "FailOneMonitor",
+      "payload": "null",
+      "action": "",
+      "exception": "UnhandledEventException",
+      "clock": {
+        "FailureInjectorGPT(5)": 12,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "Halt",
+    "details": {
+      "log": "FailureInjectorGPT(5) halted with 0 events in its inbox.",
+      "id": "FailureInjectorGPT(5)",
+      "payload": "null",
+      "haltInboxSize": 0,
+      "clock": {
+        "FailureInjectorGPT(5)": 13,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "DequeueEvent",
+    "details": {
+      "log": "\u0027FlightController(3)\u0027 dequeued event \u0027eRespTakeoff with payload (False)\u0027 in state \u0027Init\u0027.",
+      "id": "FlightController(3)",
+      "event": "eRespTakeoff",
+      "state": "Init",
+      "payload": false,
+      "clock": {
+        "FlightController(3)": 3,
+        "FailureInjectorGPT(5)": 7,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "StateTransition",
+    "details": {
+      "log": "FlightController(3) exits state \u0027Init\u0027.",
+      "id": "FlightController(3)",
+      "state": "Init",
+      "payload": "null",
+      "isEntry": false,
+      "clock": {
+        "FlightController(3)": 4,
+        "FailureInjectorGPT(5)": 7,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "PopStateUnhandledEvent",
+    "details": {
+      "log": "FlightController(3) popped state Init due to unhandled event \u0027eRespTakeoff\u0027.",
+      "id": "FlightController(3)",
+      "event": "eRespTakeoff",
+      "state": "Init",
+      "payload": "null",
+      "clock": {
+        "FlightController(3)": 5,
+        "FailureInjectorGPT(5)": 7,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "ExceptionThrown",
+    "details": {
+      "log": "FlightController(3) running action \u0027\u0027 in state \u0027Init\u0027 threw exception \u0027UnhandledEventException\u0027.",
+      "id": "FlightController(3)",
+      "state": "Init",
+      "payload": "null",
+      "action": "",
+      "exception": "UnhandledEventException",
+      "clock": {
+        "FlightController(3)": 6,
+        "FailureInjectorGPT(5)": 7,
+        "FailureDroneGPT(2)": 2
+      }
+    }
+  },
+  {
+    "type": "AssertionFailure",
+    "details": {
+      "log": "FlightController(3) received event \u0027PImplementation.eRespTakeoff\u0027 that cannot be handled.",
+      "error": "FlightController(3) received event \u0027PImplementation.eRespTakeoff\u0027 that cannot be handled.",
+      "payload": "null"
+    }
+  },
+  {
+    "type": "StrategyDescription",
+    "details": {
+      "log": "Found bug using \u0027random\u0027 strategy.",
+      "payload": "null",
+      "strategy": "random",
+      "strategyDescription": "random[seed \u0027566096923\u0027]"
+    }
+  }
+]

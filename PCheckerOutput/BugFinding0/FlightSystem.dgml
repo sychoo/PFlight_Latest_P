@@ -14,15 +14,15 @@
     <Node Id='PImplementation.DroneModesOfOperation.PreFlight' Label='PreFlight'/>
     <Node Id='PImplementation.DroneModesOfOperation.Shutdown' Label='Shutdown'/>
     <Node Id='PImplementation.DroneModesOfOperation.Takeoff' Label='Takeoff'/>
-    <Node Id='PImplementation.FailureDrone' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.FailureDrone.Init' Label='Init'/>
-    <Node Id='PImplementation.FailureDrone.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.FailureInjector' Category='StateMachine' Group='Expanded'/>
-    <Node Id='PImplementation.FailureInjector.FailOneMonitor' Label='FailOneMonitor'/>
-    <Node Id='PImplementation.FailureInjector.Halt' Label='Halt'/>
-    <Node Id='PImplementation.FailureInjector.Init' Label='Init'/>
-    <Node Id='PImplementation.FailureInjector.__InitState__' Label='__InitState__'/>
-    <Node Id='PImplementation.FailureInjector.null' Label='null'/>
+    <Node Id='PImplementation.FailureDroneGPT' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureDroneGPT.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureDroneGPT.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjectorGPT' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureInjectorGPT.Halt' Label='Halt'/>
+    <Node Id='PImplementation.FailureInjectorGPT.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureInjectorGPT.InjectFailures' Label='InjectFailures'/>
+    <Node Id='PImplementation.FailureInjectorGPT.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjectorGPT.null' Label='null'/>
     <Node Id='PImplementation.FlightController' Category='StateMachine' Group='Expanded'/>
     <Node Id='PImplementation.FlightController.Armed' Label='Armed'/>
     <Node Id='PImplementation.FlightController.Disarm' Label='Disarm'/>
@@ -65,7 +65,6 @@
     <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.MonitorBattery' Category='Contains'/>
     <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.BatteryMonitor.Init' Target='PImplementation.BatteryMonitor.MonitorBattery' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
-    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Armed' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Armed'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Hold' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Hold'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Mission' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Mission'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.StateMachine' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining'/>
@@ -84,23 +83,23 @@
     <Link Source='PImplementation.DroneModesOfOperation.Disarm' Target='PImplementation.DroneModesOfOperation.Shutdown' Label='eShutdownSystem' Index='0' EventId='eShutdownSystem'/>
     <Link Source='PImplementation.DroneModesOfOperation.Hold' Target='PImplementation.DroneModesOfOperation.InAir' Label='eInAir' Index='0' EventId='eInAir'/>
     <Link Source='PImplementation.DroneModesOfOperation.InAir' Target='PImplementation.DroneModesOfOperation.Land' Label='eLanding' Index='0' EventId='eLanding'/>
-    <Link Source='PImplementation.DroneModesOfOperation.Init' Target='PImplementation.DroneModesOfOperation.PreFlight' Label='eSpec_PreFlight' Index='0' EventId='eSpec_PreFlight'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Init' Target='PImplementation.DroneModesOfOperation.Init' Label='eSpec_PreFlight' Index='0' EventId='eSpec_PreFlight'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Init' Target='PImplementation.DroneModesOfOperation.PreFlight' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
     <Link Source='PImplementation.DroneModesOfOperation.Land' Target='PImplementation.DroneModesOfOperation.Disarm' Label='eDisarmed' Index='0' EventId='eDisarmed'/>
     <Link Source='PImplementation.DroneModesOfOperation.PreFlight' Target='PImplementation.DroneModesOfOperation.Arm' Label='eArm' Index='0' EventId='eArm'/>
     <Link Source='PImplementation.DroneModesOfOperation.Takeoff' Target='PImplementation.DroneModesOfOperation.Hold' Label='eHold' Index='0' EventId='eHold'/>
-    <Link Source='PImplementation.FailureDrone' Target='PImplementation.FailureDrone.Init' Category='Contains'/>
-    <Link Source='PImplementation.FailureDrone' Target='PImplementation.FailureDrone.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.FailureDrone.Init' Target='PImplementation.FailureInjector.FailOneMonitor' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='FailOneMonitor'/>
-    <Link Source='PImplementation.FailureDrone.__InitState__' Target='PImplementation.FailureDrone.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureDrone+ConstructorEvent'/>
-    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.FailOneMonitor' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.Halt' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.Init' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.__InitState__' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.null' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector.FailOneMonitor' Target='PImplementation.FlightController.Armed' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Armed'/>
-    <Link Source='PImplementation.FailureInjector.Init' Target='PImplementation.FailureInjector.FailOneMonitor' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
-    <Link Source='PImplementation.FailureInjector.__InitState__' Target='PImplementation.FailureInjector.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureInjector+ConstructorEvent'/>
-    <Link Source='PImplementation.FailureInjector.null' Target='PImplementation.FailureInjector.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
+    <Link Source='PImplementation.FailureDroneGPT' Target='PImplementation.FailureDroneGPT.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureDroneGPT' Target='PImplementation.FailureDroneGPT.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureDroneGPT.__InitState__' Target='PImplementation.FailureDroneGPT.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureDroneGPT+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.Halt' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.InjectFailures' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT' Target='PImplementation.FailureInjectorGPT.null' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjectorGPT.Init' Target='PImplementation.FailureInjectorGPT.InjectFailures' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT.InjectFailures' Target='PImplementation.FlightController.Armed' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Armed'/>
+    <Link Source='PImplementation.FailureInjectorGPT.__InitState__' Target='PImplementation.FailureInjectorGPT.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureInjectorGPT+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjectorGPT.null' Target='PImplementation.FailureInjectorGPT.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
     <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Armed' Category='Contains'/>
     <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Disarm' Category='Contains'/>
     <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Halt' Category='Contains'/>
@@ -218,7 +217,6 @@
     <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.SystemMonitor.Init' Target='PImplementation.SystemMonitor.MonitorSystem' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Armed' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Armed'/>
-    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Disarm' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Disarm'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Hold' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Hold'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Land' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Land'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Mission' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Mission'/>
@@ -229,6 +227,7 @@
     <Link Source='PImplementation.TelemetryMonitor' Target='PImplementation.TelemetryMonitor.MonitorTelemetry' Category='Contains'/>
     <Link Source='PImplementation.TelemetryMonitor' Target='PImplementation.TelemetryMonitor.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.TelemetryMonitor.Init' Target='PImplementation.TelemetryMonitor.MonitorTelemetry' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Armed' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Armed'/>
     <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Hold' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Hold'/>
     <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Mission' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Mission'/>
     <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.StateMachine' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK'/>

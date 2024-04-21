@@ -24,3 +24,18 @@ machine FailureDrone
         }
     }
 }
+
+machine FailureDroneGPT
+{
+    var fc: FlightController;
+    var fi: FailureInjectorGPT;
+    start state Init 
+    {
+        entry 
+        {
+            fc = new FlightController(this);
+            fi = new FailureInjectorGPT(fc);
+            send fi, eLinkInitialized;
+        }
+    }
+}

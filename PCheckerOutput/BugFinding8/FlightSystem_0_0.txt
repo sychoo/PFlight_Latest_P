@@ -1,0 +1,38 @@
+<TestLog> Running test 'FailDroneStateGPT'.
+<CreateLog> DroneModesOfOperation was created.
+<MonitorLog> DroneModesOfOperation enters state 'Init'.
+<CreateLog> LivenessMonitor was created.
+<MonitorLog> LivenessMonitor enters state 'Init'.
+<StateLog> FailureDroneGPT(2) enters state 'Init'.
+<CreateLog> FlightController(3) was created by FailureDroneGPT(2).
+<StateLog> FlightController(3) enters state 'Init'.
+<CreateLog> FailureInjectorGPT(4) was created by FailureDroneGPT(2).
+<SendLog> 'FailureDroneGPT(2)' in state 'Init' sent event 'eLinkInitialized' to 'FailureInjectorGPT(4)'.
+<StateLog> FailureInjectorGPT(4) enters state 'Init'.
+<GotoLog> FailureInjectorGPT(4) is transitioning from state 'Init' to state 'FailOneMonitor'.
+<StateLog> FailureInjectorGPT(4) exits state 'Init'.
+<StateLog> FailureInjectorGPT(4) enters state 'FailOneMonitor'.
+<DequeueLog> 'FailureInjectorGPT(4)' dequeued event 'eLinkInitialized' in state 'FailOneMonitor'.
+<SendLog> 'FailureInjectorGPT(4)' in state 'FailOneMonitor' sent event 'eRespTakeoff with payload (False)' to 'FlightController(3)'.
+<RaiseLog> 'FailureInjectorGPT(4)' raised event 'PHalt' in state 'FailOneMonitor'.
+<StateLog> FailureInjectorGPT(4) exits state 'FailOneMonitor'.
+<PopLog> FailureInjectorGPT(4) popped state FailOneMonitor due to unhandled event 'Plang.CSharpRuntime.PHalt'.
+<ExceptionLog> FailureInjectorGPT(4) running action '' in state 'FailOneMonitor' threw exception 'UnhandledEventException'.
+<ExceptionLog> FailureInjectorGPT(4) running action '' in state 'FailOneMonitor' chose to handle exception 'UnhandledEventException'.
+<HaltLog> FailureInjectorGPT(4) halted with 0 events in its inbox.
+<CreateLog> MavSDK(5) was created by FlightController(3).
+<StateLog> MavSDK(5) enters state 'Init'.
+<CreateLog> TelemetryMonitor(6) was created by MavSDK(5).
+<CreateLog> SystemMonitor(7) was created by MavSDK(5).
+<DequeueLog> 'FlightController(3)' dequeued event 'eRespTakeoff with payload (False)' in state 'Init'.
+<StateLog> FlightController(3) exits state 'Init'.
+<PopLog> FlightController(3) popped state Init due to unhandled event 'PImplementation.eRespTakeoff'.
+<ExceptionLog> FlightController(3) running action '' in state 'Init' threw exception 'UnhandledEventException'.
+<ErrorLog> FlightController(3) received event 'PImplementation.eRespTakeoff' that cannot be handled.
+<StrategyLog> Found bug using 'random' strategy.
+<StrategyLog> Checking statistics:
+<StrategyLog> Found 1 bug.
+<StrategyLog> Scheduling statistics:
+<StrategyLog> Explored 1 schedule
+<StrategyLog> Found 100.00% buggy schedules.
+<StrategyLog> Number of scheduling points in terminating schedules: 19 (min), 19 (avg), 19 (max).

@@ -318,7 +318,7 @@ machine FlightController
         on eMissionStarted do (started: bool)
         {
             if(!started)
-            {
+            {  
                 goto Error;
             }
             else

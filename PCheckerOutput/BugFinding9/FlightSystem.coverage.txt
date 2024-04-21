@@ -1,0 +1,149 @@
+Total event coverage: 4.8%
+==========================
+Monitor: DroneModesOfOperation
+==============================
+Event coverage: 0.0%
+
+	State: Init is uncovered
+		Events not covered: eError, eSpec_PreFlight
+
+	State: PreFlight is uncovered
+		Events not covered: eArm, eError, eShutdownSystem
+
+	State: Arm is uncovered
+		Events not covered: eDisarmed, eError, eTakeoff
+
+	State: Takeoff is uncovered
+		Events not covered: eError, eHold, eReturnToLaunch, eTakeoff
+
+	State: Hold is uncovered
+		Events not covered: eError, eInAir, eReturnToLaunch
+
+	State: InAir is uncovered
+		Events not covered: eError, eInAir, eLanding, eReturnToLaunch
+
+	State: Land is uncovered
+		Events not covered: eDisarmed, eError, eLanding
+
+	State: Disarm is uncovered
+		Events not covered: eError, eShutdownSystem
+
+	State: ReturnToLaunch is uncovered
+		Events not covered: eError, eReturnToLaunch, eShutdownSystem
+
+	State: Shutdown
+		State has no expected events, so coverage is 100%
+
+	State: Error is uncovered
+		Events not covered: eError
+
+StateMachine: FailureDroneGPT
+=============================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FailureDroneGPT+ConstructorEvent
+		Events sent: FailureDroneGPT+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Events sent: eLinkInitialized
+		Previous states: __InitState__
+
+StateMachine: FailureInjectorGPT
+================================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FailureInjectorGPT+ConstructorEvent
+		Events sent: FailureInjectorGPT+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
+		Next states: FailOneMonitor
+
+	State: FailOneMonitor
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Events sent: PHalt, eRespArm
+		Previous states: Init
+
+StateMachine: FlightController
+==============================
+Event coverage: 3.2%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FlightController+ConstructorEvent, PHalt
+		Events sent: FlightController+ConstructorEvent
+		Next states: Init
+
+	State: Init is uncovered
+		Events not covered: eLinkInitialized, eRaiseError
+		Previous states: __InitState__
+
+	State: PreFlight is uncovered
+		Events not covered: eBatteryRemaining, eRespArm, eSystemConnected, eTelemetryHealthAllOK
+
+	State: Armed is uncovered
+		Events not covered: eBatteryRemaining, eRespTakeoff, eSystemConnected, eTelemetryHealthAllOK
+
+	State: Takeoff is uncovered
+		Events not covered: eBatteryRemaining, eRespAtTakeoffAlt, eRespHold, eSystemConnected, eTelemetryHealthAllOK
+
+	State: Hold is uncovered
+		Events not covered: eBatteryRemaining, eMissionStarted, eSystemConnected, eTelemetryHealthAllOK
+
+	State: Mission is uncovered
+		Events not covered: eBatteryRemaining, eRespLand, eRespMissionFinished, eSystemConnected, eTelemetryHealthAllOK
+
+	State: Land is uncovered
+		Events not covered: eRespLandingState, eSystemConnected
+
+	State: Disarm is uncovered
+		Events not covered: eRespDisarm, eSystemConnected
+
+	State: ReturnToLaunch is uncovered
+		Events not covered: eRespLandingState, eRespWaitForDisarmed
+
+	State: Error
+		State has no expected events, so coverage is 100%
+
+	State: Shutdown
+		State has no expected events, so coverage is 100%
+
+Monitor: LivenessMonitor
+========================
+Event coverage: 0.0%
+
+	State: Init is uncovered
+		Events not covered: eMavSDKReq
+
+	State: PendingReqs is uncovered
+		Events not covered: eMavSDKReq, eMavSDKResp
+
+StateMachine: MavSDK
+====================
+Event coverage: 0.0%
+
+	State: __InitState__ is uncovered
+		Events not covered: MavSDK+ConstructorEvent
+
+	State: Init
+		State has no expected events, so coverage is 100%
+
+	State: WaitForReq is uncovered
+		Events not covered: eReqArm, eReqAtTakeoffAlt, eReqBatteryRemaining, eReqClearMission, eReqDisarm, eReqHold, eReqInAirStatus, eReqLand, eReqLandingState, eReqMissionFinished, eReqMissionStart, eReqMissionUpload, eReqReturnToLaunch, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth, eReqWaitForDisarmed
+
+StateMachine: _GodMachine
+=========================
+Event coverage: 100.0%
+
+	State: Init
+		State has no expected events, so coverage is 100%
+

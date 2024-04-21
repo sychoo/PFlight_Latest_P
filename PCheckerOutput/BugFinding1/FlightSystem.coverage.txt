@@ -24,13 +24,14 @@ Event coverage: 100.0%
 
 Monitor: DroneModesOfOperation
 ==============================
-Event coverage: 29.6%
+Event coverage: 28.6%
 
 	State: Init
 		State event coverage: 50.0%
 		Events received: eSpec_PreFlight
 		Events not covered: eError
-		Next states: PreFlight
+		Previous states: Init
+		Next states: Init, PreFlight
 
 	State: PreFlight
 		State event coverage: 33.3%
@@ -88,17 +89,17 @@ Event coverage: 29.6%
 		State has no expected events, so coverage is 100%
 		Previous states: Disarm
 
-	State: Error
-		State has no expected events, so coverage is 100%
+	State: Error is uncovered
+		Events not covered: eError
 
-StateMachine: FailureDrone
-==========================
+StateMachine: FailureDroneGPT
+=============================
 Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: FailureDrone+ConstructorEvent
-		Events sent: FailureDrone+ConstructorEvent
+		Events received: FailureDroneGPT+ConstructorEvent
+		Events sent: FailureDroneGPT+ConstructorEvent
 		Next states: Init
 
 	State: Init
@@ -106,30 +107,29 @@ Event coverage: 100.0%
 		Events sent: eLinkInitialized
 		Previous states: __InitState__
 
-StateMachine: FailureInjector
-=============================
+StateMachine: FailureInjectorGPT
+================================
 Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: FailureInjector+ConstructorEvent
-		Events sent: FailureInjector+ConstructorEvent
+		Events received: FailureInjectorGPT+ConstructorEvent
+		Events sent: FailureInjectorGPT+ConstructorEvent
 		Next states: Init
 
 	State: Init
 		State has no expected events, so coverage is 100%
 		Previous states: __InitState__
-		Next states: FailOneMonitor
+		Next states: InjectFailures
 
-	State: FailOneMonitor
-		State event coverage: 100.0%
-		Events received: eLinkInitialized
-		Events sent: PHalt, eLinkInitialized, eSystemConnected
+	State: InjectFailures
+		State has no expected events, so coverage is 100%
+		Events sent: PHalt, eSystemConnected
 		Previous states: Init
 
 StateMachine: FlightController
 ==============================
-Event coverage: 80.6%
+Event coverage: 83.9%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -152,10 +152,9 @@ Event coverage: 80.6%
 		Next states: Armed
 
 	State: Armed
-		State event coverage: 75.0%
-		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected, eTelemetryHealthAllOK
 		Events sent: eReqBatteryRemaining, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth
-		Events not covered: eTelemetryHealthAllOK
 		Previous states: PreFlight
 		Next states: Takeoff
 
@@ -182,17 +181,17 @@ Event coverage: 80.6%
 		Next states: Land
 
 	State: Land
-		State event coverage: 50.0%
-		Events received: eRespLandingState
+		State event coverage: 100.0%
+		Events received: eRespLandingState, eSystemConnected
 		Events sent: eReqLandingState, eReqSystemStatus
-		Events not covered: eSystemConnected
 		Previous states: Mission
 		Next states: Disarm
 
 	State: Disarm
-		State event coverage: 100.0%
-		Events received: eRespDisarm, eSystemConnected
+		State event coverage: 50.0%
+		Events received: eRespDisarm
 		Events sent: eReqDisarm, eReqSystemStatus
+		Events not covered: eSystemConnected
 		Previous states: Land
 		Next states: Shutdown
 
@@ -228,7 +227,7 @@ Event coverage: 83.3%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: MavSDK+ConstructorEvent
+		Events received: MavSDK+ConstructorEvent, PHalt
 		Events sent: MavSDK+ConstructorEvent
 		Next states: Init
 
