@@ -1,4 +1,4 @@
-Total event coverage: 70.1%
+Total event coverage: 73.2%
 ===========================
 StateMachine: BatteryMonitor
 ============================
@@ -124,12 +124,12 @@ Event coverage: 100.0%
 	State: FailOneMonitor
 		State event coverage: 100.0%
 		Events received: eLinkInitialized
-		Events sent: PHalt, eLinkInitialized, eSystemConnected
+		Events sent: PHalt, eLinkInitialized, eTelemetryHealthAllOK
 		Previous states: Init
 
 StateMachine: FlightController
 ==============================
-Event coverage: 80.6%
+Event coverage: 90.3%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -152,10 +152,9 @@ Event coverage: 80.6%
 		Next states: Armed
 
 	State: Armed
-		State event coverage: 75.0%
-		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected, eTelemetryHealthAllOK
 		Events sent: eReqBatteryRemaining, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth
-		Events not covered: eTelemetryHealthAllOK
 		Previous states: PreFlight
 		Next states: Takeoff
 
@@ -167,10 +166,9 @@ Event coverage: 80.6%
 		Next states: Hold
 
 	State: Hold
-		State event coverage: 75.0%
-		Events received: eMissionStarted, eSystemConnected, eTelemetryHealthAllOK
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eMissionStarted, eSystemConnected, eTelemetryHealthAllOK
 		Events sent: eReqBatteryRemaining, eReqMissionStart, eReqSystemStatus, eReqTelemetryHealth
-		Events not covered: eBatteryRemaining
 		Previous states: Takeoff
 		Next states: Mission
 
@@ -182,10 +180,9 @@ Event coverage: 80.6%
 		Next states: Land
 
 	State: Land
-		State event coverage: 50.0%
-		Events received: eRespLandingState
+		State event coverage: 100.0%
+		Events received: eRespLandingState, eSystemConnected
 		Events sent: eReqLandingState, eReqSystemStatus
-		Events not covered: eSystemConnected
 		Previous states: Mission
 		Next states: Disarm
 
@@ -273,7 +270,7 @@ Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: SystemMonitor+ConstructorEvent
+		Events received: PHalt, SystemMonitor+ConstructorEvent
 		Events sent: SystemMonitor+ConstructorEvent
 		Next states: Init
 

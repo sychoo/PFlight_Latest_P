@@ -1,4 +1,4 @@
-Total event coverage: 73.2%
+Total event coverage: 70.5%
 ===========================
 StateMachine: BatteryMonitor
 ============================
@@ -21,6 +21,20 @@ Event coverage: 100.0%
 		Events received: eRespBatteryRemaining
 		Events sent: eBatteryRemaining
 		Previous states: Init
+
+StateMachine: Drone
+===================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: Drone+ConstructorEvent
+		Events sent: Drone+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
 
 Monitor: DroneModesOfOperation
 ==============================
@@ -91,45 +105,9 @@ Event coverage: 29.6%
 	State: Error
 		State has no expected events, so coverage is 100%
 
-StateMachine: FailureDrone
-==========================
-Event coverage: 100.0%
-
-	State: __InitState__
-		State event coverage: 100.0%
-		Events received: FailureDrone+ConstructorEvent
-		Events sent: FailureDrone+ConstructorEvent
-		Next states: Init
-
-	State: Init
-		State has no expected events, so coverage is 100%
-		Events sent: eLinkInitialized
-		Previous states: __InitState__
-
-StateMachine: FailureInjector
-=============================
-Event coverage: 100.0%
-
-	State: __InitState__
-		State event coverage: 100.0%
-		Events received: FailureInjector+ConstructorEvent
-		Events sent: FailureInjector+ConstructorEvent
-		Next states: Init
-
-	State: Init
-		State has no expected events, so coverage is 100%
-		Previous states: __InitState__
-		Next states: FailOneMonitor
-
-	State: FailOneMonitor
-		State event coverage: 100.0%
-		Events received: eLinkInitialized
-		Events sent: PHalt, eLinkInitialized, eTelemetryHealthAllOK
-		Previous states: Init
-
 StateMachine: FlightController
 ==============================
-Event coverage: 90.3%
+Event coverage: 83.9%
 
 	State: __InitState__
 		State event coverage: 100.0%
@@ -152,9 +130,10 @@ Event coverage: 90.3%
 		Next states: Armed
 
 	State: Armed
-		State event coverage: 100.0%
-		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected, eTelemetryHealthAllOK
+		State event coverage: 50.0%
+		Events received: eRespTakeoff, eSystemConnected
 		Events sent: eReqBatteryRemaining, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth
+		Events not covered: eBatteryRemaining, eTelemetryHealthAllOK
 		Previous states: PreFlight
 		Next states: Takeoff
 
@@ -270,7 +249,7 @@ Event coverage: 100.0%
 
 	State: __InitState__
 		State event coverage: 100.0%
-		Events received: PHalt, SystemMonitor+ConstructorEvent
+		Events received: SystemMonitor+ConstructorEvent
 		Events sent: SystemMonitor+ConstructorEvent
 		Next states: Init
 

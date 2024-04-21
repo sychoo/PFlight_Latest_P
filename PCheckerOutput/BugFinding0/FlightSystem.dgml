@@ -66,6 +66,7 @@
     <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.BatteryMonitor.Init' Target='PImplementation.BatteryMonitor.MonitorBattery' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Armed' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Armed'/>
+    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Hold' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Hold'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Mission' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Mission'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.StateMachine' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining'/>
     <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Takeoff' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Takeoff'/>
@@ -96,7 +97,7 @@
     <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.Init' Category='Contains'/>
     <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.null' Category='Contains'/>
-    <Link Source='PImplementation.FailureInjector.FailOneMonitor' Target='PImplementation.FlightController.Armed' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Armed'/>
+    <Link Source='PImplementation.FailureInjector.FailOneMonitor' Target='PImplementation.FlightController.Armed' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Armed'/>
     <Link Source='PImplementation.FailureInjector.Init' Target='PImplementation.FailureInjector.FailOneMonitor' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
     <Link Source='PImplementation.FailureInjector.__InitState__' Target='PImplementation.FailureInjector.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureInjector+ConstructorEvent'/>
     <Link Source='PImplementation.FailureInjector.null' Target='PImplementation.FailureInjector.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
@@ -216,8 +217,10 @@
     <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.MonitorSystem' Category='Contains'/>
     <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.__InitState__' Category='Contains'/>
     <Link Source='PImplementation.SystemMonitor.Init' Target='PImplementation.SystemMonitor.MonitorSystem' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Armed' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Armed'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Disarm' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Disarm'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Hold' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Hold'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Land' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Land'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Mission' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Mission'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.StateMachine' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected'/>
     <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Takeoff' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Takeoff'/>
