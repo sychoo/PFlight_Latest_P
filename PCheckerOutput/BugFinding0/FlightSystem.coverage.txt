@@ -1,0 +1,321 @@
+Total event coverage: 70.1%
+===========================
+StateMachine: BatteryMonitor
+============================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: BatteryMonitor+ConstructorEvent
+		Events sent: BatteryMonitor+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Previous states: __InitState__
+		Next states: MonitorBattery
+
+	State: MonitorBattery
+		State event coverage: 100.0%
+		Events received: eRespBatteryRemaining
+		Events sent: eBatteryRemaining
+		Previous states: Init
+
+Monitor: DroneModesOfOperation
+==============================
+Event coverage: 29.6%
+
+	State: Init
+		State event coverage: 50.0%
+		Events received: eSpec_PreFlight
+		Events not covered: eError
+		Next states: PreFlight
+
+	State: PreFlight
+		State event coverage: 33.3%
+		Events received: eArm
+		Events not covered: eError, eShutdownSystem
+		Previous states: Init
+		Next states: Arm
+
+	State: Arm
+		State event coverage: 33.3%
+		Events received: eTakeoff
+		Events not covered: eDisarmed, eError
+		Previous states: PreFlight
+		Next states: Takeoff
+
+	State: Takeoff
+		State event coverage: 25.0%
+		Events received: eHold
+		Events not covered: eError, eReturnToLaunch, eTakeoff
+		Previous states: Arm
+		Next states: Hold
+
+	State: Hold
+		State event coverage: 33.3%
+		Events received: eInAir
+		Events not covered: eError, eReturnToLaunch
+		Previous states: Takeoff
+		Next states: InAir
+
+	State: InAir
+		State event coverage: 25.0%
+		Events received: eLanding
+		Events not covered: eError, eInAir, eReturnToLaunch
+		Previous states: Hold
+		Next states: Land
+
+	State: Land
+		State event coverage: 33.3%
+		Events received: eDisarmed
+		Events not covered: eError, eLanding
+		Previous states: InAir
+		Next states: Disarm
+
+	State: Disarm
+		State event coverage: 50.0%
+		Events received: eShutdownSystem
+		Events not covered: eError
+		Previous states: Land
+		Next states: Shutdown
+
+	State: ReturnToLaunch is uncovered
+		Events not covered: eError, eReturnToLaunch, eShutdownSystem
+
+	State: Shutdown
+		State has no expected events, so coverage is 100%
+		Previous states: Disarm
+
+	State: Error
+		State has no expected events, so coverage is 100%
+
+StateMachine: FailureDrone
+==========================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FailureDrone+ConstructorEvent
+		Events sent: FailureDrone+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Events sent: eLinkInitialized
+		Previous states: __InitState__
+
+StateMachine: FailureInjector
+=============================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FailureInjector+ConstructorEvent
+		Events sent: FailureInjector+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Previous states: __InitState__
+		Next states: FailOneMonitor
+
+	State: FailOneMonitor
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Events sent: PHalt, eLinkInitialized, eSystemConnected
+		Previous states: Init
+
+StateMachine: FlightController
+==============================
+Event coverage: 80.6%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: FlightController+ConstructorEvent
+		Events sent: FlightController+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State event coverage: 50.0%
+		Events received: eLinkInitialized
+		Events not covered: eRaiseError
+		Previous states: __InitState__
+		Next states: PreFlight
+
+	State: PreFlight
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eMissionCleared, eMissionUploaded, eRespArm, eSystemConnected, eTelemetryHealthAllOK
+		Events sent: eReqArm, eReqBatteryRemaining, eReqClearMission, eReqMissionUpload, eReqSystemStatus, eReqTelemetryHealth
+		Previous states: Init
+		Next states: Armed
+
+	State: Armed
+		State event coverage: 75.0%
+		Events received: eBatteryRemaining, eRespTakeoff, eSystemConnected
+		Events sent: eReqBatteryRemaining, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth
+		Events not covered: eTelemetryHealthAllOK
+		Previous states: PreFlight
+		Next states: Takeoff
+
+	State: Takeoff
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eRespAtTakeoffAlt, eRespHold, eSystemConnected, eTelemetryHealthAllOK
+		Events sent: eReqAtTakeoffAlt, eReqBatteryRemaining, eReqHold, eReqSystemStatus, eReqTelemetryHealth
+		Previous states: Armed
+		Next states: Hold
+
+	State: Hold
+		State event coverage: 75.0%
+		Events received: eMissionStarted, eSystemConnected, eTelemetryHealthAllOK
+		Events sent: eReqBatteryRemaining, eReqMissionStart, eReqSystemStatus, eReqTelemetryHealth
+		Events not covered: eBatteryRemaining
+		Previous states: Takeoff
+		Next states: Mission
+
+	State: Mission
+		State event coverage: 100.0%
+		Events received: eBatteryRemaining, eRespLand, eRespMissionFinished, eSystemConnected, eTelemetryHealthAllOK
+		Events sent: eReqBatteryRemaining, eReqLand, eReqMissionFinished, eReqSystemStatus, eReqTelemetryHealth
+		Previous states: Hold
+		Next states: Land
+
+	State: Land
+		State event coverage: 50.0%
+		Events received: eRespLandingState
+		Events sent: eReqLandingState, eReqSystemStatus
+		Events not covered: eSystemConnected
+		Previous states: Mission
+		Next states: Disarm
+
+	State: Disarm
+		State event coverage: 100.0%
+		Events received: eRespDisarm, eSystemConnected
+		Events sent: eReqDisarm, eReqSystemStatus
+		Previous states: Land
+		Next states: Shutdown
+
+	State: ReturnToLaunch is uncovered
+		Events not covered: eRespLandingState, eRespWaitForDisarmed
+
+	State: Error
+		State has no expected events, so coverage is 100%
+
+	State: Shutdown
+		State has no expected events, so coverage is 100%
+		Events sent: PHalt
+		Previous states: Disarm
+
+Monitor: LivenessMonitor
+========================
+Event coverage: 100.0%
+
+	State: Init
+		State event coverage: 100.0%
+		Events received: eMavSDKReq
+		Previous states: PendingReqs
+		Next states: PendingReqs[hot]
+
+	State: PendingReqs
+		State event coverage: 100.0%
+		Events received: eMavSDKReq, eMavSDKResp
+		Next states: Init, PendingReqs[hot]
+
+StateMachine: MavSDK
+====================
+Event coverage: 83.3%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: MavSDK+ConstructorEvent
+		Events sent: MavSDK+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State has no expected events, so coverage is 100%
+		Events sent: eLinkInitialized
+		Previous states: __InitState__
+		Next states: WaitForReq
+
+	State: WaitForReq
+		State event coverage: 82.4%
+		Events received: eReqArm, eReqAtTakeoffAlt, eReqBatteryRemaining, eReqClearMission, eReqDisarm, eReqHold, eReqLand, eReqLandingState, eReqMissionFinished, eReqMissionStart, eReqMissionUpload, eReqSystemStatus, eReqTakeoff, eReqTelemetryHealth
+		Events sent: eRespArm, eRespAtTakeoffAlt, eRespBatteryRemaining, eRespClearMission, eRespDisarm, eRespHold, eRespLand, eRespLandingState, eRespMissionFinished, eRespMissionStart, eRespMissionUpload, eRespSystemStatus, eRespTakeoff, eRespTelemetryHealth
+		Events not covered: eReqInAirStatus, eReqReturnToLaunch, eReqWaitForDisarmed
+		Previous states: Init
+
+StateMachine: MissionMonitor
+============================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: MissionMonitor+ConstructorEvent
+		Events sent: MissionMonitor+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Previous states: __InitState__
+		Next states: MonitorMission
+
+	State: MonitorMission
+		State event coverage: 100.0%
+		Events received: eRespClearMission, eRespMissionStart, eRespMissionUpload
+		Events sent: eMissionCleared, eMissionStarted, eMissionUploaded
+		Previous states: Init
+
+StateMachine: SystemMonitor
+===========================
+Event coverage: 100.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: SystemMonitor+ConstructorEvent
+		Events sent: SystemMonitor+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Previous states: __InitState__
+		Next states: MonitorSystem
+
+	State: MonitorSystem
+		State event coverage: 100.0%
+		Events received: eRespSystemStatus
+		Events sent: eSystemConnected
+		Previous states: Init
+
+StateMachine: TelemetryMonitor
+==============================
+Event coverage: 75.0%
+
+	State: __InitState__
+		State event coverage: 100.0%
+		Events received: TelemetryMonitor+ConstructorEvent
+		Events sent: TelemetryMonitor+ConstructorEvent
+		Next states: Init
+
+	State: Init
+		State event coverage: 100.0%
+		Events received: eLinkInitialized
+		Previous states: __InitState__
+		Next states: MonitorTelemetry
+
+	State: MonitorTelemetry
+		State event coverage: 50.0%
+		Events received: eRespTelemetryHealth
+		Events sent: eTelemetryHealthAllOK
+		Events not covered: eRespInAirStatus
+		Previous states: Init
+
+StateMachine: _GodMachine
+=========================
+Event coverage: 100.0%
+
+	State: Init
+		State has no expected events, so coverage is 100%
+

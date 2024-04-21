@@ -1,0 +1,22 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
+    <LangVersion>latest</LangVersion>
+    <OutputPath>./</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="/Users/chus/Code/proj/vspells/PFlight_minimal/PForeign/FlightSystemFuncs.cs"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PCSharpRuntime">
+        <HintPath>/Users/chus/.dotnet/tools/.store/p/2.1.2/p/2.1.2/tools/net8.0/any/PCSharpRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="PCheckerCore">
+        <HintPath>/Users/chus/.dotnet/tools/.store/p/2.1.2/p/2.1.2/tools/net8.0/any/PCheckerCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

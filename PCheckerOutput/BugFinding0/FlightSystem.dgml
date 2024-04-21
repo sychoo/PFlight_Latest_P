@@ -1,0 +1,265 @@
+﻿<DirectedGraph xmlns='http://schemas.microsoft.com/vs/2009/dgml'>
+  <Nodes>
+    <Node Id='PImplementation.BatteryMonitor' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.BatteryMonitor.Init' Label='Init'/>
+    <Node Id='PImplementation.BatteryMonitor.MonitorBattery' Label='MonitorBattery'/>
+    <Node Id='PImplementation.BatteryMonitor.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.DroneModesOfOperation' Label='PImplementation.DroneModesOfOperation' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Arm' Label='Arm'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Disarm' Label='Disarm'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Hold' Label='Hold'/>
+    <Node Id='PImplementation.DroneModesOfOperation.InAir' Label='InAir'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Init' Label='Init'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Land' Label='Land'/>
+    <Node Id='PImplementation.DroneModesOfOperation.PreFlight' Label='PreFlight'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Shutdown' Label='Shutdown'/>
+    <Node Id='PImplementation.DroneModesOfOperation.Takeoff' Label='Takeoff'/>
+    <Node Id='PImplementation.FailureDrone' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureDrone.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureDrone.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjector' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FailureInjector.FailOneMonitor' Label='FailOneMonitor'/>
+    <Node Id='PImplementation.FailureInjector.Halt' Label='Halt'/>
+    <Node Id='PImplementation.FailureInjector.Init' Label='Init'/>
+    <Node Id='PImplementation.FailureInjector.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FailureInjector.null' Label='null'/>
+    <Node Id='PImplementation.FlightController' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.FlightController.Armed' Label='Armed'/>
+    <Node Id='PImplementation.FlightController.Disarm' Label='Disarm'/>
+    <Node Id='PImplementation.FlightController.Halt' Label='Halt'/>
+    <Node Id='PImplementation.FlightController.Hold' Label='Hold'/>
+    <Node Id='PImplementation.FlightController.Init' Label='Init'/>
+    <Node Id='PImplementation.FlightController.Land' Label='Land'/>
+    <Node Id='PImplementation.FlightController.Mission' Label='Mission'/>
+    <Node Id='PImplementation.FlightController.PreFlight' Label='PreFlight'/>
+    <Node Id='PImplementation.FlightController.Shutdown' Label='Shutdown'/>
+    <Node Id='PImplementation.FlightController.StateMachine' Label='PreFlight'/>
+    <Node Id='PImplementation.FlightController.Takeoff' Label='Takeoff'/>
+    <Node Id='PImplementation.FlightController.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.FlightController.null' Label='null'/>
+    <Node Id='PImplementation.LivenessMonitor' Label='PImplementation.LivenessMonitor' Category='Monitor' Group='Expanded'/>
+    <Node Id='PImplementation.LivenessMonitor.Init' Label='Init'/>
+    <Node Id='PImplementation.LivenessMonitor.PendingReqs' Label='PendingReqs'/>
+    <Node Id='PImplementation.LivenessMonitor.PendingReqs[hot]' Label='PendingReqs[hot]'/>
+    <Node Id='PImplementation.MavSDK' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.MavSDK.Init' Label='Init'/>
+    <Node Id='PImplementation.MavSDK.WaitForReq' Label='WaitForReq'/>
+    <Node Id='PImplementation.MavSDK.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.MissionMonitor' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.MissionMonitor.Init' Label='Init'/>
+    <Node Id='PImplementation.MissionMonitor.MonitorMission' Label='MonitorMission'/>
+    <Node Id='PImplementation.MissionMonitor.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.SystemMonitor' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.SystemMonitor.Init' Label='Init'/>
+    <Node Id='PImplementation.SystemMonitor.MonitorSystem' Label='MonitorSystem'/>
+    <Node Id='PImplementation.SystemMonitor.__InitState__' Label='__InitState__'/>
+    <Node Id='PImplementation.TelemetryMonitor' Category='StateMachine' Group='Expanded'/>
+    <Node Id='PImplementation.TelemetryMonitor.Init' Label='Init'/>
+    <Node Id='PImplementation.TelemetryMonitor.MonitorTelemetry' Label='MonitorTelemetry'/>
+    <Node Id='PImplementation.TelemetryMonitor.__InitState__' Label='__InitState__'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine' Category='StateMachine' Group='Expanded'/>
+    <Node Id='Plang.CSharpRuntime._GodMachine.Init' Label='Init'/>
+  </Nodes>
+  <Links>
+    <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.Init' Category='Contains'/>
+    <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.MonitorBattery' Category='Contains'/>
+    <Link Source='PImplementation.BatteryMonitor' Target='PImplementation.BatteryMonitor.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.BatteryMonitor.Init' Target='PImplementation.BatteryMonitor.MonitorBattery' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Armed' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Armed'/>
+    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Mission' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Mission'/>
+    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.StateMachine' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining'/>
+    <Link Source='PImplementation.BatteryMonitor.MonitorBattery' Target='PImplementation.FlightController.Takeoff' Label='eBatteryRemaining' Index='0' EventId='PImplementation.eBatteryRemaining' HandledBy='Takeoff'/>
+    <Link Source='PImplementation.BatteryMonitor.__InitState__' Target='PImplementation.BatteryMonitor.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.BatteryMonitor+ConstructorEvent'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Arm' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Disarm' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Hold' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.InAir' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Init' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Land' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.PreFlight' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Shutdown' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation' Target='PImplementation.DroneModesOfOperation.Takeoff' Category='Contains'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Arm' Target='PImplementation.DroneModesOfOperation.Takeoff' Label='eTakeoff' Index='0' EventId='eTakeoff'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Disarm' Target='PImplementation.DroneModesOfOperation.Shutdown' Label='eShutdownSystem' Index='0' EventId='eShutdownSystem'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Hold' Target='PImplementation.DroneModesOfOperation.InAir' Label='eInAir' Index='0' EventId='eInAir'/>
+    <Link Source='PImplementation.DroneModesOfOperation.InAir' Target='PImplementation.DroneModesOfOperation.Land' Label='eLanding' Index='0' EventId='eLanding'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Init' Target='PImplementation.DroneModesOfOperation.PreFlight' Label='eSpec_PreFlight' Index='0' EventId='eSpec_PreFlight'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Land' Target='PImplementation.DroneModesOfOperation.Disarm' Label='eDisarmed' Index='0' EventId='eDisarmed'/>
+    <Link Source='PImplementation.DroneModesOfOperation.PreFlight' Target='PImplementation.DroneModesOfOperation.Arm' Label='eArm' Index='0' EventId='eArm'/>
+    <Link Source='PImplementation.DroneModesOfOperation.Takeoff' Target='PImplementation.DroneModesOfOperation.Hold' Label='eHold' Index='0' EventId='eHold'/>
+    <Link Source='PImplementation.FailureDrone' Target='PImplementation.FailureDrone.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureDrone' Target='PImplementation.FailureDrone.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureDrone.Init' Target='PImplementation.FailureInjector.FailOneMonitor' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='FailOneMonitor'/>
+    <Link Source='PImplementation.FailureDrone.__InitState__' Target='PImplementation.FailureDrone.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureDrone+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.FailOneMonitor' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.Halt' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.Init' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjector' Target='PImplementation.FailureInjector.null' Category='Contains'/>
+    <Link Source='PImplementation.FailureInjector.FailOneMonitor' Target='PImplementation.FlightController.Armed' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Armed'/>
+    <Link Source='PImplementation.FailureInjector.Init' Target='PImplementation.FailureInjector.FailOneMonitor' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FailureInjector.__InitState__' Target='PImplementation.FailureInjector.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FailureInjector+ConstructorEvent'/>
+    <Link Source='PImplementation.FailureInjector.null' Target='PImplementation.FailureInjector.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Armed' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Disarm' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Halt' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Hold' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Init' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Land' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Mission' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.PreFlight' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Shutdown' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.StateMachine' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.Takeoff' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.FlightController' Target='PImplementation.FlightController.null' Category='Contains'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.DroneModesOfOperation.PreFlight' Label='eArm' Index='0' EventId='eArm'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.FlightController.Takeoff' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='0' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.MavSDK.WaitForReq' Label='eReqBatteryRemaining' Index='1' EventId='PImplementation.eReqBatteryRemaining' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTelemetryHealth' Index='2' EventId='PImplementation.eReqTelemetryHealth' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Armed' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTakeoff' Index='3' EventId='PImplementation.eReqTakeoff' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.DroneModesOfOperation.Land' Label='eDisarmed' Index='0' EventId='eDisarmed'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.FlightController.Shutdown' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='0' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Disarm' Target='PImplementation.MavSDK.WaitForReq' Label='eReqDisarm' Index='1' EventId='PImplementation.eReqDisarm' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.DroneModesOfOperation.Takeoff' Label='eHold' Index='0' EventId='eHold'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.FlightController.Mission' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTelemetryHealth' Index='0' EventId='PImplementation.eReqTelemetryHealth' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='1' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.MavSDK.WaitForReq' Label='eReqBatteryRemaining' Index='2' EventId='PImplementation.eReqBatteryRemaining' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Hold' Target='PImplementation.MavSDK.WaitForReq' Label='eReqMissionStart' Index='3' EventId='PImplementation.eReqMissionStart' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Init' Target='PImplementation.FlightController.PreFlight' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.DroneModesOfOperation.InAir' Label='eLanding' Index='0' EventId='eLanding'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.FlightController.Disarm' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='0' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Land' Target='PImplementation.MavSDK.WaitForReq' Label='eReqLandingState' Index='1' EventId='PImplementation.eReqLandingState' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.DroneModesOfOperation.Hold' Label='eInAir' Index='0' EventId='eInAir'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.FlightController.Land' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTelemetryHealth' Index='0' EventId='PImplementation.eReqTelemetryHealth' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='1' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.MavSDK.WaitForReq' Label='eReqBatteryRemaining' Index='2' EventId='PImplementation.eReqBatteryRemaining' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.MavSDK.WaitForReq' Label='eReqMissionFinished' Index='3' EventId='PImplementation.eReqMissionFinished' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Mission' Target='PImplementation.MavSDK.WaitForReq' Label='eReqLand' Index='4' EventId='PImplementation.eReqLand' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.DroneModesOfOperation.Init' Label='eSpec_PreFlight' Index='0' EventId='eSpec_PreFlight'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.FlightController.Armed' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqBatteryRemaining' Index='0' EventId='PImplementation.eReqBatteryRemaining' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqClearMission' Index='1' EventId='PImplementation.eReqClearMission' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqMissionUpload' Index='2' EventId='PImplementation.eReqMissionUpload' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='3' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTelemetryHealth' Index='4' EventId='PImplementation.eReqTelemetryHealth' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.PreFlight' Target='PImplementation.MavSDK.WaitForReq' Label='eReqArm' Index='5' EventId='PImplementation.eReqArm' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Shutdown' Target='PImplementation.DroneModesOfOperation.Disarm' Label='eShutdownSystem' Index='0' EventId='eShutdownSystem'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.DroneModesOfOperation.Arm' Label='eTakeoff' Index='0' EventId='eTakeoff'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.FlightController.Hold' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.LivenessMonitor.Init' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.MavSDK.WaitForReq' Label='eReqSystemStatus' Index='0' EventId='PImplementation.eReqSystemStatus' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.MavSDK.WaitForReq' Label='eReqBatteryRemaining' Index='1' EventId='PImplementation.eReqBatteryRemaining' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.MavSDK.WaitForReq' Label='eReqTelemetryHealth' Index='2' EventId='PImplementation.eReqTelemetryHealth' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.MavSDK.WaitForReq' Label='eReqAtTakeoffAlt' Index='3' EventId='PImplementation.eReqAtTakeoffAlt' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.Takeoff' Target='PImplementation.MavSDK.WaitForReq' Label='eReqHold' Index='4' EventId='PImplementation.eReqHold' HandledBy='WaitForReq'/>
+    <Link Source='PImplementation.FlightController.__InitState__' Target='PImplementation.FlightController.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.FlightController+ConstructorEvent'/>
+    <Link Source='PImplementation.FlightController.null' Target='PImplementation.FlightController.Halt' Label='halt' Category='halt' Index='0' EventId='PChecker.Actors.Events.HaltEvent'/>
+    <Link Source='PImplementation.LivenessMonitor' Target='PImplementation.LivenessMonitor.Init' Category='Contains'/>
+    <Link Source='PImplementation.LivenessMonitor' Target='PImplementation.LivenessMonitor.PendingReqs' Category='Contains'/>
+    <Link Source='PImplementation.LivenessMonitor' Target='PImplementation.LivenessMonitor.PendingReqs[hot]' Category='Contains'/>
+    <Link Source='PImplementation.LivenessMonitor.Init' Target='PImplementation.LivenessMonitor.PendingReqs[hot]' Label='eMavSDKReq' Index='0' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.LivenessMonitor.PendingReqs' Target='PImplementation.LivenessMonitor.Init' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.LivenessMonitor.PendingReqs' Target='PImplementation.LivenessMonitor.PendingReqs[hot]' Label='eMavSDKResp' Index='0' EventId='eMavSDKResp'/>
+    <Link Source='PImplementation.LivenessMonitor.PendingReqs' Target='PImplementation.LivenessMonitor.PendingReqs[hot]' Label='eMavSDKReq' Index='1' EventId='eMavSDKReq'/>
+    <Link Source='PImplementation.MavSDK' Target='PImplementation.MavSDK.Init' Category='Contains'/>
+    <Link Source='PImplementation.MavSDK' Target='PImplementation.MavSDK.WaitForReq' Category='Contains'/>
+    <Link Source='PImplementation.MavSDK' Target='PImplementation.MavSDK.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.BatteryMonitor.Init' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.FlightController.Init' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.MavSDK.WaitForReq' Label='goto' Category='goto' Index='0' EventId='PChecker.Actors.Events.GotoStateEvent'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.MissionMonitor.Init' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.SystemMonitor.Init' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MavSDK.Init' Target='PImplementation.TelemetryMonitor.Init' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.BatteryMonitor.MonitorBattery' Label='eRespBatteryRemaining' Index='0' EventId='PImplementation.eRespBatteryRemaining' HandledBy='MonitorBattery'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Armed' Label='eRespTakeoff' Index='0' EventId='PImplementation.eRespTakeoff' HandledBy='Armed'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Disarm' Label='eRespDisarm' Index='0' EventId='PImplementation.eRespDisarm' HandledBy='Disarm'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Land' Label='eRespLandingState' Index='0' EventId='PImplementation.eRespLandingState' HandledBy='Land'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Mission' Label='eRespMissionFinished' Index='0' EventId='PImplementation.eRespMissionFinished' HandledBy='Mission'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Mission' Label='eRespLand' Index='1' EventId='PImplementation.eRespLand' HandledBy='Mission'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.PreFlight' Label='eRespArm' Index='0' EventId='PImplementation.eRespArm' HandledBy='PreFlight'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Takeoff' Label='eRespAtTakeoffAlt' Index='0' EventId='PImplementation.eRespAtTakeoffAlt' HandledBy='Takeoff'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.FlightController.Takeoff' Label='eRespHold' Index='1' EventId='PImplementation.eRespHold' HandledBy='Takeoff'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.LivenessMonitor.PendingReqs' Label='eMavSDKResp' Index='0' EventId='eMavSDKResp'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.MissionMonitor.MonitorMission' Label='eRespClearMission' Index='0' EventId='PImplementation.eRespClearMission' HandledBy='MonitorMission'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.MissionMonitor.MonitorMission' Label='eRespMissionUpload' Index='1' EventId='PImplementation.eRespMissionUpload' HandledBy='MonitorMission'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.MissionMonitor.MonitorMission' Label='eRespMissionStart' Index='2' EventId='PImplementation.eRespMissionStart' HandledBy='MonitorMission'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.SystemMonitor.MonitorSystem' Label='eRespSystemStatus' Index='0' EventId='PImplementation.eRespSystemStatus' HandledBy='MonitorSystem'/>
+    <Link Source='PImplementation.MavSDK.WaitForReq' Target='PImplementation.TelemetryMonitor.MonitorTelemetry' Label='eRespTelemetryHealth' Index='0' EventId='PImplementation.eRespTelemetryHealth' HandledBy='MonitorTelemetry'/>
+    <Link Source='PImplementation.MavSDK.__InitState__' Target='PImplementation.MavSDK.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.MavSDK+ConstructorEvent'/>
+    <Link Source='PImplementation.MissionMonitor' Target='PImplementation.MissionMonitor.Init' Category='Contains'/>
+    <Link Source='PImplementation.MissionMonitor' Target='PImplementation.MissionMonitor.MonitorMission' Category='Contains'/>
+    <Link Source='PImplementation.MissionMonitor' Target='PImplementation.MissionMonitor.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.MissionMonitor.Init' Target='PImplementation.MissionMonitor.MonitorMission' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.MissionMonitor.MonitorMission' Target='PImplementation.FlightController.Hold' Label='eMissionStarted' Index='0' EventId='PImplementation.eMissionStarted' HandledBy='Hold'/>
+    <Link Source='PImplementation.MissionMonitor.MonitorMission' Target='PImplementation.FlightController.StateMachine' Label='eMissionCleared' Index='0' EventId='PImplementation.eMissionCleared'/>
+    <Link Source='PImplementation.MissionMonitor.MonitorMission' Target='PImplementation.FlightController.StateMachine' Label='eMissionUploaded' Index='1' EventId='PImplementation.eMissionUploaded'/>
+    <Link Source='PImplementation.MissionMonitor.__InitState__' Target='PImplementation.MissionMonitor.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.MissionMonitor+ConstructorEvent'/>
+    <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.Init' Category='Contains'/>
+    <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.MonitorSystem' Category='Contains'/>
+    <Link Source='PImplementation.SystemMonitor' Target='PImplementation.SystemMonitor.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.SystemMonitor.Init' Target='PImplementation.SystemMonitor.MonitorSystem' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Disarm' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Disarm'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Hold' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Hold'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Mission' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Mission'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.StateMachine' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected'/>
+    <Link Source='PImplementation.SystemMonitor.MonitorSystem' Target='PImplementation.FlightController.Takeoff' Label='eSystemConnected' Index='0' EventId='PImplementation.eSystemConnected' HandledBy='Takeoff'/>
+    <Link Source='PImplementation.SystemMonitor.__InitState__' Target='PImplementation.SystemMonitor.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.SystemMonitor+ConstructorEvent'/>
+    <Link Source='PImplementation.TelemetryMonitor' Target='PImplementation.TelemetryMonitor.Init' Category='Contains'/>
+    <Link Source='PImplementation.TelemetryMonitor' Target='PImplementation.TelemetryMonitor.MonitorTelemetry' Category='Contains'/>
+    <Link Source='PImplementation.TelemetryMonitor' Target='PImplementation.TelemetryMonitor.__InitState__' Category='Contains'/>
+    <Link Source='PImplementation.TelemetryMonitor.Init' Target='PImplementation.TelemetryMonitor.MonitorTelemetry' Label='eLinkInitialized' Index='0' EventId='PImplementation.eLinkInitialized' HandledBy='Init'/>
+    <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Hold' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Hold'/>
+    <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Mission' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Mission'/>
+    <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.StateMachine' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK'/>
+    <Link Source='PImplementation.TelemetryMonitor.MonitorTelemetry' Target='PImplementation.FlightController.Takeoff' Label='eTelemetryHealthAllOK' Index='0' EventId='PImplementation.eTelemetryHealthAllOK' HandledBy='Takeoff'/>
+    <Link Source='PImplementation.TelemetryMonitor.__InitState__' Target='PImplementation.TelemetryMonitor.Init' Label='ConstructorEvent' Index='0' EventId='PImplementation.TelemetryMonitor+ConstructorEvent'/>
+    <Link Source='Plang.CSharpRuntime._GodMachine' Target='Plang.CSharpRuntime._GodMachine.Init' Category='Contains'/>
+  </Links>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Error" ValueLabel="True">
+      <Condition Expression="HasCategory('Error')" />
+      <Setter Property="Background" Value="#FFC15656" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Actor" ValueLabel="True">
+      <Condition Expression="HasCategory('Actor')" />
+      <Setter Property="Background" Value="#FF57AC56" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Monitor" ValueLabel="True">
+      <Condition Expression="HasCategory('Monitor')" />
+      <Setter Property="Background" Value="#FF558FDA" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="halt" ValueLabel="True">
+      <Condition Expression="HasCategory('halt')" />
+      <Setter Property="Stroke" Value="#FFFF6C6C" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="push" ValueLabel="True">
+      <Condition Expression="HasCategory('push')" />
+      <Setter Property="Stroke" Value="#FF7380F5" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="pop" ValueLabel="True">
+      <Condition Expression="HasCategory('pop')" />
+      <Setter Property="Stroke" Value="#FF7380F5" />
+      <Setter Property="StrokeDashArray" Value="4 2" />
+    </Style>
+  </Styles>
+</DirectedGraph>
